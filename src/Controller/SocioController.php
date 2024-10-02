@@ -10,7 +10,7 @@ use App\Repository\EmpresaRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Annotation\Route;
 
 class SocioController extends AbstractController
 {
@@ -23,7 +23,7 @@ class SocioController extends AbstractController
     }
 
     /**
-     * @Route('/socio', methods={"POST"})
+     * @Route("/socio", methods={"POST"})
      */
 
     public function addSocio(): JsonResponse

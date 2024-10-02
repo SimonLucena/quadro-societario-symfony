@@ -18,8 +18,9 @@ class SocioRepository extends ServiceEntityRepository
 
     public function create(Socio $socio): void
     {
-        $this->em->persist($socio);
-        $this->em->flush();
+        $em = $this->getEntityManager();
+        $em->persist($socio);
+        $em->flush();
     }
 
     public function read(Socio $socio)
@@ -29,14 +30,16 @@ class SocioRepository extends ServiceEntityRepository
 
     public function update(Socio $socio): void
     {
-        $this->em->persist($socio);
-        $this->em->flush();
+        $em = $this->getEntityManager();
+        $em->persist($socio);
+        $em->flush();
     }
 
     public function delete(Socio $socio): void
     {
-        $this->em->remove($socio);
-        $this->em->flush();
+        $em = $this->getEntityManager();
+        $em->remove($socio);
+        $em->flush();
     }
 
 //    /**

@@ -9,7 +9,7 @@ use App\Repository\EmpresaRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Annotation\Route;
 
 class EmpresaController extends AbstractController
 {
@@ -20,7 +20,7 @@ class EmpresaController extends AbstractController
     }
 
     /**
-     * @Route('/empresa', methods={"POST"})
+     * @Route("/empresa", methods={"POST"})
      */
 
     public function addEmpresa(): JsonResponse
