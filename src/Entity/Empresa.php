@@ -10,15 +10,15 @@ class Empresa
 {
     #[ORM\Id]
     #[ORM\Column(length: 255)]
-    private ?string $codigoid = null;
+    private string $codigoid;
 
     #[ORM\Column(length: 255)]
-    private ?string $cnpj = null;
+    private string $cnpj;
 
     #[ORM\Column(length: 255)]
-    private ?string $razao_social = null;
+    private string $razao_social;
 
-    public function getCodigoid(): ?string
+    public function getCodigoid(): string
     {
         return $this->codigoid;
     }
@@ -30,7 +30,7 @@ class Empresa
         return $this;
     }
 
-    public function getCnpj(): ?string
+    public function getCnpj(): string
     {
         return $this->cnpj;
     }
@@ -42,7 +42,7 @@ class Empresa
         return $this;
     }
 
-    public function getRazaoSocial(): ?string
+    public function getRazaoSocial(): string
     {
         return $this->razao_social;
     }

@@ -10,16 +10,16 @@ class Socio
 {
     #[ORM\Id]
     #[ORM\Column(length: 255)]
-    private ?string $codigoid = null;
+    private string $codigoid;
 
     #[ORM\Column(length: 255)]
-    private ?string $cnpj_cpf = null;
+    private string $cnpj_cpf;
 
     #[ORM\Column(length: 255)]
-    private ?string $nome = null;
+    private string $nome;
 
-    #[ORM\Column(length: 255)]
-    private ?string $codigoid_empresa = null;
+    #[ORM\ManyToOne(targetEntity: Empresa::class, inversedBy: 'products')]
+    private Empresa $codigoid_empresa;
 
     #[ORM\Column]
     private ?float $participacao = null;
@@ -36,7 +36,7 @@ class Socio
         return $this;
     }
 
-    public function getCnpjCpf(): ?string
+    public function getCnpjCpf(): string
     {
         return $this->cnpj_cpf;
     }
@@ -48,7 +48,7 @@ class Socio
         return $this;
     }
 
-    public function getNome(): ?string
+    public function getNome(): string
     {
         return $this->nome;
     }
@@ -60,12 +60,12 @@ class Socio
         return $this;
     }
 
-    public function getCodigoidEmpresa(): ?string
+    public function getCodigoidEmpresa(): Empresa
     {
         return $this->codigoid_empresa;
     }
 
-    public function setCodigoidEmpresa(string $codigoid_empresa): static
+    public function setCodigoidEmpresa(Empresa $codigoid_empresa): static
     {
         $this->codigoid_empresa = $codigoid_empresa;
 
