@@ -16,6 +16,29 @@ class SocioRepository extends ServiceEntityRepository
         parent::__construct($registry, Socio::class);
     }
 
+    public function create(Socio $socio): void
+    {
+        $this->em->persist($socio);
+        $this->em->flush();
+    }
+
+    public function read(Socio $socio)
+    {
+
+    }
+
+    public function update(Socio $socio): void
+    {
+        $this->em->persist($socio);
+        $this->em->flush();
+    }
+
+    public function delete(Socio $socio): void
+    {
+        $this->em->remove($socio);
+        $this->em->flush();
+    }
+
 //    /**
 //     * @return Socio[] Returns an array of Socio objects
 //     */

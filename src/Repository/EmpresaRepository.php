@@ -17,51 +17,30 @@ class EmpresaRepository extends ServiceEntityRepository
         parent::__construct($registry, Empresa::class);
     }
 
-    public function save(Empresa $empresa): void
+    public function create(Empresa $empresa): void
     {
-        $this->em->persist($empresa);
-        $this->em->flush();
+        $em = $this->getEntityManager();
+        $em->persist($empresa);
+        $em->flush();
     }
 
-    public function read(Empresa $empresa)
+    public function getCodigoidByCnpj(string $cnpj): ?Empresa
     {
-
+        return $this->findOneBy(['cnpj' => $cnpj]);
     }
 
     public function update(Empresa $empresa): void
     {
-        $this->em->persist($empresa);
-        $this->em->flush();
+        $em = $this->getEntityManager();
+        $em->persist($empresa);
+        $em->flush();
     }
 
     public function delete(Empresa $empresa): void
     {
-        $this->em->remove($empresa);
-        $this->em->flush();
+        $em = $this->getEntityManager();
+        $em->remove($empresa);
+        $em->flush();
     }
 
-//    /**
-//     * @return Socio[] Returns an array of Socio objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('s')
-//            ->andWhere('s.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('s.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
-
-//    public function findOneBySomeField($value): ?Socio
-//    {
-//        return $this->createQueryBuilder('s')
-//            ->andWhere('s.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
 }

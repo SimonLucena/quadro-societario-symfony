@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\EmpresaRepository;
+use Symfony\Component\Uid\Uuid;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: EmpresaRepository::class)]
@@ -23,9 +24,9 @@ class Empresa
         return $this->codigoid;
     }
 
-    public function setCodigoid(string $codigoid): static
+    public function setCodigoid(): static
     {
-        $this->codigoid = $codigoid;
+        $this->codigoid = Uuid::v4()->toRfc4122();
 
         return $this;
     }
