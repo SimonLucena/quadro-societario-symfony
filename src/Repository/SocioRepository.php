@@ -6,9 +6,6 @@ use App\Entity\Socio;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
-/**
- * @extends ServiceEntityRepository<Socio>
- */
 class SocioRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
@@ -23,9 +20,9 @@ class SocioRepository extends ServiceEntityRepository
         $em->flush();
     }
 
-    public function read(Socio $socio)
+    public function getSocioByEmpresa(string $empresa): array
     {
-
+        return $this->findBy(['codigoid_empresa' => $empresa]);
     }
 
     public function update(Socio $socio): void
@@ -41,29 +38,4 @@ class SocioRepository extends ServiceEntityRepository
         $em->remove($socio);
         $em->flush();
     }
-
-//    /**
-//     * @return Socio[] Returns an array of Socio objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('s')
-//            ->andWhere('s.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('s.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
-
-//    public function findOneBySomeField($value): ?Socio
-//    {
-//        return $this->createQueryBuilder('s')
-//            ->andWhere('s.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
 }

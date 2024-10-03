@@ -6,10 +6,6 @@ use App\Entity\Empresa;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
-/**
- * @extends ServiceEntityRepository<Empresa>
- */
-
 class EmpresaRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
@@ -29,10 +25,14 @@ class EmpresaRepository extends ServiceEntityRepository
         return $this->findOneBy(['cnpj' => $cnpj]);
     }
 
+    public function getEmpresa(string $codigoid): ?Empresa
+    {
+        return $this->findOneBy(['codigoid' => $codigoid]);
+    }
+
     public function update(Empresa $empresa): void
     {
         $em = $this->getEntityManager();
-        $em->persist($empresa);
         $em->flush();
     }
 
